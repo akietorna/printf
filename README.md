@@ -1,2 +1,2 @@
 # printf
-buiding a costomized printf
+buiding a customized printf
