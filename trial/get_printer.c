@@ -34,6 +34,20 @@ int match_char(va_list myargs)
 	return (1);
 }
 
+/**
+ *match_float - prints a float
+ *@myargs: the float
+ *Return: number of characther
+ */
+
+int match_float(va_list myargs)
+{
+	char *flt = " ";
+
+	va_arg(myargs, double);
+	write(1,flt, 1);
+	return (1);
+}
 
 /**
  *match_int - prints an integer

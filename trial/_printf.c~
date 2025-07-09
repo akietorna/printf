@@ -14,7 +14,7 @@ def_func printer[] =
 	{'s', match_string},
 	{'i', match_int},
 	{'d', match_int},
-        {'%', match_char}
+        {'f', match_float}
 };
 
 
@@ -54,7 +54,6 @@ int _printf(const char *format, ...)
 				write(2,str,_strlen(str));
 			}
 			a = a + 2;
-			total -= 2;
 			continue;
 		}
 		_putchar(format[a]);

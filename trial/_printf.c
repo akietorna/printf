@@ -14,7 +14,7 @@ def_func printer[] =
 	{'s', match_string},
 	{'i', match_int},
 	{'d', match_int},
-        {'%', match_char}
+        {'f', match_float}
 };
 
 
