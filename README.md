@@ -1,2 +1,1 @@
-# printf
-buiding a customized printf
+This project aims at biulding a customized printf function
