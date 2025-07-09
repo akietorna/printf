@@ -34,13 +34,14 @@ int match_char(va_list myargs)
 	return (1);
 }
 
+
 /**
- *match_float - prints a float
- *@myargs: the float
+ *match_perc - prints a percent character
+ *@myargs: the character
  *Return: number of characther
  */
 
-int match_float(va_list myargs)
+int match_perc(va_list myargs)
 {
 	char *flt = " ";
 

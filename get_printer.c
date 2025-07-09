@@ -14,12 +14,9 @@ int match_string(va_list myargs)
 {
 	char *str = va_arg(myargs, char *);
 
-	if (str != NULL)
-	{
-		write(1,str,_strlen(str));
-		return (_strlen(str));
-	}
-	return (0);
+	str = (str == NULL) ? "(null)" : str;
+	write(1,str,_strlen(str));
+	return (_strlen(str));
 }
 
 /**
@@ -33,7 +30,6 @@ int match_char(va_list myargs)
 	_putchar(va_arg(myargs, int));
 	return (1);
 }
-
 
 /**
  *match_int - prints an integer
