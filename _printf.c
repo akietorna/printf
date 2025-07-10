@@ -39,9 +39,16 @@ int _printf(const char *format, ...)
 			{
 				return (1);
 			}
+			if (format[a + 1] == '%')
+			{
+				_putchar('%');
+				*total += 1;
+			}
 			else
 			{
-				special_cases(format, &total, a);
+				_putchar('%');
+				_putchar(format[a + 1]);
+				*total += 2;
 			}
 			a = a + 2;
 			total -= 2;
