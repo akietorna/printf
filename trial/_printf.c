@@ -31,7 +31,11 @@ int _printf(const char *format, ...)
 	int total = 0;
 
 	va_start(myargs, format);
-	while (format != NULL && format[a] != '\0')
+	if (format == NULL)
+	{
+		return (1);
+	}
+	while (format[a] != '\0')
 	{
 		if (format[a] == '%')
 		{
@@ -49,6 +53,10 @@ int _printf(const char *format, ...)
 			{
 				_putchar('%');
 				total++;
+			}
+			if (format[a + 1] == '\0')
+			{
+				return (1);
 			}
 			a = a + 2;
 			total -= 2;
