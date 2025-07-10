@@ -13,8 +13,7 @@ def_func printer[] =
 	{'c', match_char},
 	{'s', match_string},
 	{'i', match_int},
-	{'d', match_int},
-        {'f', match_float}
+	{'d', match_int}
 };
 
 
@@ -37,21 +36,19 @@ int _printf(const char *format, ...)
 		if (format[a] == '%')
 		{
 			int b;
-			int status = 0;
 
-			for (b = 0; b < 5; b++)
+			for (b = 0; b < 4; b++)
 			{
 				if (format[a + 1] == printer[b].arg)
 				{
 					total += printer[b].print(myargs);
-					status = 1;
 					break;
 				}
 			}
-			if (status == 0)
+			if (format[a + 1] == '%')
 			{
-				char *str = "There are no format specifier";
-				write(2,str,_strlen(str));
+				_putchar('%');
+				total++;
 			}
 			a = a + 2;
 			total -= 2;
