@@ -1,9 +1,9 @@
-#include <stdarg.h>
 #ifndef MAIN_H
 #define MAIN_H
+#include <stdarg.h>
 
 /**
- *def_func - defines a match-make function
+ *struct def_func - defines a match-make function
  *@arg: the charather
  *@print: the function
  */
@@ -23,5 +23,5 @@ int match_int(va_list myargs);
 int _strlen(char *s);
 int print_int(int num, int len);
 void _putchar(char c);
-
+void special_cases(const char *format, int *total, int a);
 #endif
