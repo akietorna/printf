@@ -39,7 +39,10 @@ int _printf(const char *format, ...)
 			{
 				return (-1);
 			}
-			special_cases(format, &total, a, status);
+			else
+			{
+				special_cases(format, &total, a, status);
+			}
 			a = a + 2;
 			total -= 2;
 			continue;
@@ -67,7 +70,7 @@ void special_cases(const char *format, int *total, int a, int status)
 		_putchar('%');
 		*total += 1;
 	}
-	else if (status != 1)
+	if (status != 1)
 	{
 		_putchar('%');
 		_putchar(format[a + 1]);
