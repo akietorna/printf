@@ -36,7 +36,7 @@ int _strlen(char *str)
  *Return: the length of integer
  */
 
-int print_int(int num,int len)
+int print_int(int num, int len)
 {
 	if (num < 0)
 	{

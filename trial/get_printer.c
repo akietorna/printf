@@ -15,7 +15,7 @@ int match_string(va_list myargs)
 	char *str = va_arg(myargs, char *);
 
 	str = (str == NULL) ? "(null)" : str;
-	write(1,str,_strlen(str));
+	write(1, str, _strlen(str));
 	return (_strlen(str));
 }
 
