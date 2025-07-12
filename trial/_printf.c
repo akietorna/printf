@@ -39,7 +39,10 @@ int _printf(const char *format, ...)
 			{
 				return (-1);
 			}
-			special_cases(format, &total, a, status);
+			else
+			{
+				special_cases(format, &total, a, status);
+			}
 			a = a + 2;
 			total -= 2;
 			continue;

@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[a] == '%')
 		{
-			for (b = 0; b < 4; b++)
+			for (b = 0; b < 2; b++)
 			{
 				if (format[a + 1] == printer[b].arg)
 				{
@@ -39,10 +39,7 @@ int _printf(const char *format, ...)
 			{
 				return (-1);
 			}
-			else
-			{
-				special_cases(format, &total, a, status);
-			}
+			special_cases(format, &total, a, status);
 			a = a + 2;
 			total -= 2;
 			continue;

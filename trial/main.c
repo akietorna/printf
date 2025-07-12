@@ -19,8 +19,8 @@ int main(void)
      *void *addr;
      */
 
-    len = _printf("%!\n");
-    len2 = printf("wo\n");
+    len = _printf("%");
+    len2 = printf("-1");
     if (len2 == len)
     {
 	    _printf("success  %i  %i   \n", len, len2);
