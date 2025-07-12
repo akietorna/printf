@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include "main.h"
+#include <limits.h>
 
 /**
  *_putchar - prints a character
@@ -43,7 +44,7 @@ int print_int(int num, int len)
 		_putchar('-');
 		_putchar('2');
 		len += 2;
-		return (147483648, len);
+		return (print_int(147483648, len));
 	}
 	if (num < 0)
 	{
