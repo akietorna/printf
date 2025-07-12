@@ -39,14 +39,14 @@ int _printf(const char *format, ...)
 			}
 			if (format[a + 1] == '\0')
 			{
-				return (1);
+				return (-1);
 			}
 			if (format[a + 1] == '%')
 			{
 				_putchar('%');
 				total += 1;
 			}
-			if (status != 1)
+			else if (status != 1)
 			{
 				_putchar('%');
 				_putchar(format[a + 1]);
