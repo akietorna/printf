@@ -38,6 +38,13 @@ int _strlen(char *str)
 
 int print_int(int num, int len)
 {
+	if (num == INT_MIN)
+	{
+		_putchar('-');
+		_putchar('2');
+		len += 2;
+		return (147483648, len);
+	}
 	if (num < 0)
 	{
 		_putchar('-');
