@@ -13,21 +13,19 @@ int _printf(const char *format, ...)
 {
 	def_func printer[] = {
 		{'c', match_char},
-		{'s', match_string},
-		{'i', match_int},
-		{'d', match_int}
+		{'s', match_string}
 	};
 	va_list myargs;
 	int a = (format == NULL) ? -1 : 0;
 	int total = 0;
 	int b;
-	int status = 0;
 
 	va_start(myargs, format);
 	while (format != NULL && format[a] != '\0')
 	{
 		if (format[a] == '%')
 		{
+			int status = 0;
 			for (b = 0; b < 4; b++)
 			{
 				if (format[a + 1] == printer[b].arg)
@@ -41,17 +39,7 @@ int _printf(const char *format, ...)
 			{
 				return (-1);
 			}
-			if (format[a + 1] == '%')
-			{
-				_putchar('%');
-				total += 1;
-			}
-			else if (status != 1)
-			{
-				_putchar('%');
-				_putchar(format[a + 1]);
-				total += 2;
-			}
+			special_cases(format, &total, a, status);
 			a = a + 2;
 			total -= 2;
 			continue;
@@ -68,20 +56,21 @@ int _printf(const char *format, ...)
  *@format: characther string
  *@total: pointer to total number of characters
  *@a: position in the format array
+ *@status: checks if special case is needed
  *Return: Nothing
  */
 
-void special_cases(const char *format, int *total, int a)
+void special_cases(const char *format, int *total, int a, int status)
 {
 	if (format[a + 1] == '%')
 	{
 		_putchar('%');
 		*total += 1;
 	}
-	else
+	else if (status != 1)
 	{
 		_putchar('%');
 		_putchar(format[a + 1]);
-		*total += 2;
+		total += 2;
 	}
 }

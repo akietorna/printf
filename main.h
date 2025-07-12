@@ -23,5 +23,5 @@ int match_int(va_list myargs);
 int _strlen(char *s);
 int print_int(int num, int len);
 void _putchar(char c);
-void special_cases(const char *format, int *total, int a);
+void special_cases(const char *format, int *total, int a, int status);
 #endif
