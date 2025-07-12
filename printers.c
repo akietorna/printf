@@ -42,7 +42,7 @@ int print_int(int num, int len)
 	{
 		_putchar('-');
 		len++;
-		print_int(-num, len);
+		return (print_int(-num, len));
 	}
 	if (num >= 10)
 	{
