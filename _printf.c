@@ -19,13 +19,13 @@ int _printf(const char *format, ...)
 	int a = (format == NULL) ? -1 : 0;
 	int total = 0;
 	int b;
+	int status = 0;
 
 	va_start(myargs, format);
 	while (format != NULL && format[a] != '\0')
 	{
 		if (format[a] == '%')
 		{
-			int status = 0;
 			for (b = 0; b < 4; b++)
 			{
 				if (format[a + 1] == printer[b].arg)
@@ -71,6 +71,6 @@ void special_cases(const char *format, int *total, int a, int status)
 	{
 		_putchar('%');
 		_putchar(format[a + 1]);
-		total += 2;
+		*total += 2;
 	}
 }

@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include "main.h"
+#include <limits.h>
 
 /**
  *_putchar - prints a character
@@ -38,11 +39,18 @@ int _strlen(char *str)
 
 int print_int(int num, int len)
 {
+	if (num == INT_MIN)
+	{
+		_putchar('-');
+		_putchar('2');
+		len += 2;
+		return (print_int(147483648, len));
+	}
 	if (num < 0)
 	{
 		_putchar('-');
 		len++;
-		print_int(-num, len);
+		return (print_int(-num, len));
 	}
 	if (num >= 10)
 	{
