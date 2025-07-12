@@ -44,12 +44,6 @@ int _printf(const char *format, ...)
 				_putchar('%');
 				total += 1;
 			}
-			else
-			{
-				_putchar('%');
-				_putchar(format[a + 1]);
-				total += 2;
-			}
 			a = a + 2;
 			total -= 2;
 			continue;
