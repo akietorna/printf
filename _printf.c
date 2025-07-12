@@ -70,7 +70,7 @@ void special_cases(const char *format, int *total, int a, int status)
 		_putchar('%');
 		*total += 1;
 	}
-	if (status != 1)
+	else if (status != 1)
 	{
 		_putchar('%');
 		_putchar(format[a + 1]);
