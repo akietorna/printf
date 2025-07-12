@@ -18,9 +18,10 @@ int _printf(const char *format, ...)
 		{'d', match_int}
 	};
 	va_list myargs;
-	int a = (format == NULL) ? 1 : 0;
+	int a = (format == NULL) ? -1 : 0;
 	int total = 0;
 	int b;
+	int status = 0;
 
 	va_start(myargs, format);
 	while (format != NULL && format[a] != '\0')
@@ -32,6 +33,7 @@ int _printf(const char *format, ...)
 				if (format[a + 1] == printer[b].arg)
 				{
 					total += printer[b].print(myargs);
+					status = 1;
 					break;
 				}
 			}
@@ -43,6 +45,11 @@ int _printf(const char *format, ...)
 			{
 				_putchar('%');
 				total += 1;
+			}
+			if (status != 1)
+			{
+				_putchar('%');
+				_putchar(format[a + 1]);
 			}
 			a = a + 2;
 			total -= 2;
