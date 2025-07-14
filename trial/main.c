@@ -19,7 +19,7 @@ int main(void)
      *void *addr;
      */
 
-    len = _printf("%b\n", 98);
+    len = _printf("%b\n", 1024);
     len2 = printf("1100010\n");
     if (len2 == len)
     {

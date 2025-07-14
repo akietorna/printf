@@ -9,11 +9,11 @@
 
 int print_bin(unsigned int num, int len)
 {
-	if (num > 2)
+	if (num >= 2)
 	{
 		len = print_bin(num / 2, len);
 	}
-	_putchar((num % 2) + '0');
+	_putchar((num % 2) +'0');
 	len++;
 	return (len);
 }
