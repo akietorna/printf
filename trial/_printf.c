@@ -13,7 +13,10 @@ int _printf(const char *format, ...)
 {
 	def_func printer[] = {
 		{'c', match_char},
-		{'s', match_string}
+		{'s', match_string},
+		{'d', match_int},
+		{'i', match_int},
+		{'b', match_bin}
 	};
 	va_list myargs;
 	int a = (format == NULL) ? -1 : 0;
@@ -26,7 +29,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[a] == '%')
 		{
-			for (b = 0; b < 4; b++)
+			for (b = 0; b < 5; b++)
 			{
 				if (format[a + 1] == printer[b].arg)
 				{
@@ -39,10 +42,7 @@ int _printf(const char *format, ...)
 			{
 				return (-1);
 			}
-			else
-			{
-				special_cases(format, &total, a, status);
-			}
+			special_cases(format, &total, a, status);
 			a = a + 2;
 			total -= 2;
 			continue;

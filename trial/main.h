@@ -24,4 +24,8 @@ int _strlen(char *s);
 int print_int(int num, int len);
 void _putchar(char c);
 void special_cases(const char *format, int *total, int a, int status);
+int print_bin(unsigned int num, int len);
+int match_bin(va_list myargs);
+
+
 #endif
