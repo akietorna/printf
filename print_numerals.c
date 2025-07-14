@@ -13,7 +13,7 @@ int print_bin(unsigned int num, int len)
 	{
 		len = print_bin(num / 2, len);
 	}
-	_putchar((num % 2) +'0');
+	_putchar((num % 2) + '0');
 	len++;
 	return (len);
 }
@@ -32,7 +32,7 @@ int print_oct(unsigned int num, int len)
 	{
 		len = print_oct(num / 8, len);
 	}
-	_putchar((num % 8) +'0');
+	_putchar((num % 8) + '0');
 	len++;
 	return (len);
 }
