@@ -25,7 +25,15 @@ int print_int(int num, int len);
 void _putchar(char c);
 void special_cases(const char *format, int *total, int a, int status);
 int print_bin(unsigned int num, int len);
+int print_hex(unsigned int num, int len);
+int print_hex_big(unsigned int num, int len);
+int print_oct(unsigned int num, int len);
+int print_unint(unsigned int num, int len);
 int match_bin(va_list myargs);
-
+int match_hex(va_list myargs);
+int match_oct(va_list myargs);
+int match_unint(va_list myargs);
+int match_hex_big(va_list myargs);
+extern def_func printer[];
 
 #endif

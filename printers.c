@@ -60,3 +60,22 @@ int print_int(int num, int len)
 	len++;
 	return (len);
 }
+
+
+/**
+ *print_unint - prints an unsigned integer
+ *@num: the integer
+ *@len: length of the integer
+ *Return: the length of integer
+ */
+
+int print_unint(unsigned int num, int len)
+{
+	if (num >= 10)
+	{
+		len = print_int(num / 10, len);
+	}
+	_putchar((num % 10) + '0');
+	len++;
+	return (len);
+}
