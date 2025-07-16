@@ -43,14 +43,30 @@ int print_int(int num, int len, char *mybuff, int *c)
 {
 	if (num == INT_MIN)
 	{
+		if (*c >= 1023)
+		{
+			write(1, mybuff, (*c));
+			empty_buff(mybuff, c);
+		}
 		mybuff[*c] = '-';
+		*c += 1;
+		if (*c >= 1023)
+		{
+			write(1, mybuff, (*c));
+			empty_buff(mybuff, c);
+		}
 		mybuff[*c + 1] = '2';
+		*c += 1;
 		len += 2;
-		*c += 2;
 		return (print_int(147483648, len, mybuff, c));
 	}
 	if (num < 0)
 	{
+		if (*c >= 1023)
+		{
+			write(1, mybuff, (*c));
+			empty_buff(mybuff, c);
+		}
 		mybuff[*c] = '-';
 		*c += 1;
 		len++;
@@ -60,7 +76,7 @@ int print_int(int num, int len, char *mybuff, int *c)
 	{
 		len = print_int(num / 10, len, mybuff, c);
 	}
-	if (*c >= 1022)
+	if (*c >= 1023)
 	{
 		write(1, mybuff, (*c));
 		empty_buff(mybuff, c);
@@ -87,7 +103,7 @@ int print_unint(unsigned int num, int len, char *mybuff, int *c)
 	{
 		len = print_int(num / 10, len, mybuff, c);
 	}
-	if (*c >= 1022)
+	if (*c >= 1023)
 	{
 		write(1, mybuff, (*c));
 		empty_buff(mybuff, c);

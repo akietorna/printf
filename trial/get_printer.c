@@ -20,7 +20,7 @@ int match_string(va_list myargs, char *mybuff, int *c)
 	str = (str == NULL) ? "(null)" : str;
 	while (str[a] != '\0')
 	{
-		if (*c >= 1022)
+		if (*c >= 1023)
 		{
 			write(1, mybuff, (*c));
 			empty_buff(mybuff, c);
@@ -42,7 +42,7 @@ int match_string(va_list myargs, char *mybuff, int *c)
 
 int match_char(va_list myargs, char *mybuff, int *c)
 {
-	if (*c >= 1022)
+	if (*c >= 1023)
 	{
 		write(1, mybuff, (*c));
 		empty_buff(mybuff, c);

@@ -44,11 +44,6 @@ int _printf(const char *format, ...)
 				free(mybuff);
 				return (-1);
 			}
-			if (c >= 1022 || format[a] == '\n')
-			{
-				write(1, mybuff,(c));
-				empty_buff(mybuff, &c);
-			}
 			special_cases(format, &total, a, status, mybuff, &c);
 			a = a + 2;
 			total -= 2;
@@ -56,7 +51,7 @@ int _printf(const char *format, ...)
 		}
 		if (c >= 1022 || format[a] == '\n')
 		{
-			write(1, mybuff,(c + 1));
+			write(1, mybuff,(c));
 			empty_buff(mybuff, &c);
 		}
 		mybuff[c] = format[a];
@@ -89,16 +84,28 @@ void special_cases(const char *format, int *total, int a,
 {
 	if (format[a + 1] == '%')
 	{
+		if (*c >= 1023)
+		{
+			write(1, mybuff, (*c));
+                        empty_buff(mybuff, c);
+                }
 		mybuff[*c] = '%';
 		*total += 1;
 		*c += 1;
 	}
 	else if (status != 1)
 	{
+		if (*c >= 1023)
+                {
+                        write(1, mybuff, (*c));
+                        empty_buff(mybuff, c);
+                }
 		mybuff[*c] = '%';
-		mybuff[*c + 1] = format[a + 1];
+		*c += 1;
+		a++;
+		mybuff[*c] = format[a];
 		*total += 2;
-		*c += 2;
+		*c += 1;
 	}
 }
 
