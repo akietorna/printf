@@ -18,7 +18,7 @@ int print_bin(unsigned int num, int len, char *mybuff, int *c)
 	}
 	if (*c >= 1022)
 	{
-		write(1, mybuff, (*c + 1));
+		write(1, mybuff, (*c));
 		empty_buff(mybuff, c);
 	}
 	mybuff[*c] = (num % 2) + '0';
@@ -45,7 +45,7 @@ int print_oct(unsigned int num, int len, char *mybuff, int *c)
 	}
 	if (*c >= 1022)
 	{
-		write(1, mybuff, (*c + 1));
+		write(1, mybuff, (*c));
 		empty_buff(mybuff, c);
 	}
 	mybuff[*c] = (num % 8) + '0';
@@ -73,7 +73,7 @@ int print_hex_big(unsigned int num, int len, char *mybuff, int *c)
 	{
 		if (*c >= 1022)
 		{
-			write(1, mybuff, (*c + 1));
+			write(1, mybuff, (*c));
 			empty_buff(mybuff, c);
 		}
 		mybuff[*c] = ((num % 16) - 10) + 'A';
@@ -82,7 +82,7 @@ int print_hex_big(unsigned int num, int len, char *mybuff, int *c)
 	{
 		if (*c >= 1022)
                 {
-                        write(1, mybuff, (*c + 1));
+                        write(1, mybuff, (*c));
                         empty_buff(mybuff, c);
                 }
                 mybuff[*c] = (num % 16) + '0';
@@ -112,7 +112,7 @@ int print_hex(unsigned int num, int len, char *mybuff, int *c)
 	{
 		if (*c >= 1022)
 		{
-			write(1, mybuff, (*c + 1));
+			write(1, mybuff, (*c));
 			empty_buff(mybuff, c);
 		}
 		mybuff[*c] = ((num % 16) - 10) + 'a';
@@ -121,7 +121,7 @@ int print_hex(unsigned int num, int len, char *mybuff, int *c)
 	{
 		if (*c >= 1022)
                 {
-                        write(1, mybuff, (*c + 1));
+                        write(1, mybuff, (*c));
                         empty_buff(mybuff, c);
                 }
                 mybuff[*c] = (num % 16) + '0';

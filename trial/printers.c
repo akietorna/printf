@@ -62,7 +62,7 @@ int print_int(int num, int len, char *mybuff, int *c)
 	}
 	if (*c >= 1022)
 	{
-		write(1, mybuff, (*c + 1));
+		write(1, mybuff, (*c));
 		empty_buff(mybuff, c);
 	}
 	mybuff[*c] = (num % 10) + '0';
@@ -89,7 +89,7 @@ int print_unint(unsigned int num, int len, char *mybuff, int *c)
 	}
 	if (*c >= 1022)
 	{
-		write(1, mybuff, (*c + 1));
+		write(1, mybuff, (*c));
 		empty_buff(mybuff, c);
 	}
 	mybuff[*c] = (num % 10) + '0';

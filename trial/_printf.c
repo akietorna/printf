@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	int b;
 	int c = 0;
 	int status = 0;
-	char *mybuff = malloc(1024 * sizeof(char));
+	char *mybuff = _calloc(1024, sizeof(char));
 
 	if (mybuff == NULL)
 	{
@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 			}
 			if (c >= 1022 || format[a] == '\n')
 			{
-				write(1, mybuff,(c + 1));
+				write(1, mybuff,(c));
 				empty_buff(mybuff, &c);
 			}
 			special_cases(format, &total, a, status, mybuff, &c);
@@ -65,7 +65,7 @@ int _printf(const char *format, ...)
 	}
 	if (c >= 0)
 	{
-		write(1, mybuff, (c + 1));
+		write(1, mybuff, (c));
 	}
 	va_end(myargs);
 	free(mybuff);
@@ -99,5 +99,38 @@ void special_cases(const char *format, int *total, int a,
 		mybuff[*c + 1] = format[a + 1];
 		*total += 2;
 		*c += 2;
+	}
+}
+
+
+/**
+ *_calloc - allocate and initializes dynamic memory
+ *@num: number of members
+ *@Size: size of each member
+ *Return: Nothing
+ */
+
+void *_calloc(unsigned int num, unsigned int size)
+{
+	if (num == 0 || size == 0)
+	{
+		return (NULL);
+	}
+	else
+	{
+		void *myptr = malloc(num * size);
+		unsigned int a;
+		char *new;
+
+		if (myptr == NULL)
+		{
+			return (NULL);
+		}
+		new = (char *)myptr;
+		for (a = 0; a < size; a++)
+		{
+			new[a] = 0;
+		}
+		return (new);
 	}
 }
