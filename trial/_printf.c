@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	int b;
 	int c = 0;
 	int status = 0;
-	char *mybuff = _calloc(1024, sizeof(char));
+	char *mybuff = malloc(1024 * sizeof(char));
 
 	if (mybuff == NULL)
 	{
