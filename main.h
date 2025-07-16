@@ -11,29 +11,30 @@
 typedef struct def_func
 {
 	char arg;
-	int (*print)(va_list);
+	int (*print)(va_list, char *mybuff, int *c);
 } def_func;
 
 
+void empty_buff(char *mybuff, int *c);
 int _printf(const char *format, ...);
-int match_float(va_list myargs);
-int match_string(va_list myargs);
-int match_char(va_list myargs);
-int match_int(va_list myargs);
+int match_string(va_list myargs, char *mybuff, int *c);
+int match_char(va_list myargs, char *mybuff, int *c);
+int match_int(va_list myargs, char *mybuff, int *c);
 int _strlen(char *s);
-int print_int(int num, int len);
+int print_int(int num, int len, char *mybuff, int *c);
 void _putchar(char c);
-void special_cases(const char *format, int *total, int a, int status);
-int print_bin(unsigned int num, int len);
-int print_hex(unsigned int num, int len);
-int print_hex_big(unsigned int num, int len);
-int print_oct(unsigned int num, int len);
-int print_unint(unsigned int num, int len);
-int match_bin(va_list myargs);
-int match_hex(va_list myargs);
-int match_oct(va_list myargs);
-int match_unint(va_list myargs);
-int match_hex_big(va_list myargs);
+void special_cases(const char *format, int *total, int a,
+		   int status, char *mybuff, int *c);
+int print_bin(unsigned int num, int len, char *mybuff, int *c);
+int print_hex(unsigned int num, int len, char *mybuff, int *c);
+int print_hex_big(unsigned int num, int len, char *mybuff, int *c);
+int print_oct(unsigned int num, int len, char *mybuff, int *c);
+int print_unint(unsigned int num, int len, char *mybuff, int *c);
+int match_bin(va_list myargs, char *mybuff, int *c);
+int match_hex(va_list myargs, char *mybuff, int *c);
+int match_oct(va_list myargs, char *mybuff, int *c);
+int match_unint(va_list myargs, char *mybuff, int *c);
+int match_hex_big(va_list myargs, char *mybuff, int *c);
 extern def_func printer[];
 
 #endif

@@ -34,30 +34,40 @@ int _strlen(char *str)
  *print_int - prints an integer
  *@num: the integer
  *@len: length of the integer
+ *@mybuff: printing buffer
+ *@c: position on the buffer
  *Return: the length of integer
  */
 
-int print_int(int num, int len)
+int print_int(int num, int len, char *mybuff, int *c)
 {
 	if (num == INT_MIN)
 	{
-		_putchar('-');
-		_putchar('2');
+		mybuff[*c] = '-';
+		mybuff[*c + 1] = '2';
 		len += 2;
-		return (print_int(147483648, len));
+		*c += 2;
+		return (print_int(147483648, len, mybuff, c));
 	}
 	if (num < 0)
 	{
-		_putchar('-');
+		mybuff[*c] = '-';
+		*c += 1;
 		len++;
-		return (print_int(-num, len));
+		return (print_int(-num, len, mybuff, c));
 	}
 	if (num >= 10)
 	{
-		len = print_int(num / 10, len);
+		len = print_int(num / 10, len, mybuff, c);
 	}
-	_putchar((num % 10) + '0');
+	if (*c >= 1022)
+	{
+		write(1, mybuff, (*c + 1));
+		empty_buff(mybuff, c);
+	}
+	mybuff[*c] = (num % 10) + '0';
 	len++;
+	*c += 1;
 	return (len);
 }
 
@@ -66,16 +76,24 @@ int print_int(int num, int len)
  *print_unint - prints an unsigned integer
  *@num: the integer
  *@len: length of the integer
+ *@mybuff: print buffer
+ *@c: position in the buffer
  *Return: the length of integer
  */
 
-int print_unint(unsigned int num, int len)
+int print_unint(unsigned int num, int len, char *mybuff, int *c)
 {
 	if (num >= 10)
 	{
-		len = print_int(num / 10, len);
+		len = print_int(num / 10, len, mybuff, c);
 	}
-	_putchar((num % 10) + '0');
+	if (*c >= 1022)
+	{
+		write(1, mybuff, (*c + 1));
+		empty_buff(mybuff, c);
+	}
+	mybuff[*c] = (num % 10) + '0';
 	len++;
+	*c += 1;
 	return (len);
 }
