@@ -55,7 +55,7 @@ int print_int(int num, int len, char *mybuff, int *c)
 			write(1, mybuff, (*c));
 			empty_buff(mybuff, c);
 		}
-		mybuff[*c + 1] = '2';
+		mybuff[*c] = '2';
 		*c += 1;
 		len += 2;
 		return (print_int(147483648, len, mybuff, c));

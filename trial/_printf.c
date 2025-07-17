@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	int b;
 	int c = 0;
 	int status = 0;
-	char *mybuff = malloc(1024 * sizeof(char));
+	char *mybuff = _calloc(1024, sizeof(char));
 
 	if (mybuff == NULL)
 	{
@@ -49,7 +49,7 @@ int _printf(const char *format, ...)
 			total -= 2;
 			continue;
 		}
-		if (c >= 1022 || format[a] == '\n')
+		if (c >= 1023 || format[a] == '\n')
 		{
 			write(1, mybuff,(c));
 			empty_buff(mybuff, &c);
@@ -103,6 +103,11 @@ void special_cases(const char *format, int *total, int a,
 		mybuff[*c] = '%';
 		*c += 1;
 		a++;
+		if (*c >= 1023)
+                {
+                        write(1, mybuff, (*c));
+                        empty_buff(mybuff, c);
+                }
 		mybuff[*c] = format[a];
 		*total += 2;
 		*c += 1;
@@ -134,7 +139,7 @@ void *_calloc(unsigned int num, unsigned int size)
 			return (NULL);
 		}
 		new = (char *)myptr;
-		for (a = 0; a < size; a++)
+		for (a = 0; a < (size * num); a++)
 		{
 			new[a] = 0;
 		}

@@ -80,8 +80,8 @@ int print_hex_big(unsigned int num, int len, char *mybuff, int *c)
 	}
 	else
 	{
-		if (*c >= 1022)
-                {
+		if (*c >= 1023)
+		{
                         write(1, mybuff, (*c));
                         empty_buff(mybuff, c);
                 }
