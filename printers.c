@@ -1,34 +1,69 @@
 #include <unistd.h>
 #include "main.h"
 #include <limits.h>
+#include <stdarg.h>
 
 /**
- *_putchar - prints a character
- *@c: the character
- *return: Nothing
+ *match_big_string - print big string
+ *@myargs: arguments
+ *@mybuff: print buffer
+ *@c: position on buffer
+ *Return: lenth of the string
  */
 
-void _putchar(char c)
+int match_big_string(va_list myargs, char *mybuff, int *c)
 {
-	write(1, &c, 1);
-}
-
-/**
- *_strlen - tells the length of a string
- *@str: the string
- *Return: length of string
- */
-
-int _strlen(char *str)
-{
-	int a = 0;
+        char *str = va_arg(myargs, char *);
+        int a = 0;
+	int total = 0;
 
 	while (str[a] != '\0')
-	{
-		a++;
-	}
-	return (a);
+        {
+                if (*c >= 1023)
+                {
+                        write(1, mybuff, (*c));
+                        empty_buff(mybuff, c);
+                }
+		if ((str[a] > 0 && str[a] < 32) || (str[a] >= 127))
+		{
+			mybuff[*c] = '\\';
+			*c += 1;
+			total++;
+			if (*c >= 1023)
+			{
+				write(1, mybuff, (*c));
+				empty_buff(mybuff, c);
+			}
+			mybuff[*c] = 'x';
+			*c += 1;
+			total++;
+			if (str[a] < 16)
+			{
+				if (*c >= 1023)
+				{
+					write(1, mybuff, (*c));
+					empty_buff(mybuff, c);
+				}
+				mybuff[*c] = '0';
+				*c += 1;
+				total++;
+			}
+			total += print_hex_big(str[a], 0, mybuff, c);
+			a++;
+			continue;
+		}
+		if (*c >= 1023)
+                {
+                        write(1, mybuff, (*c));
+                        empty_buff(mybuff, c);
+                }
+                mybuff[*c] = str[a];
+                a++;
+                *c += 1;
+        }
+        return (a + total);
 }
+
 
 /**
  *print_int - prints an integer

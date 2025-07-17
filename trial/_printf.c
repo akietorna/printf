@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[a] == '%')
 		{
-			for (b = 0; b < 9; b++)
+			for (b = 0; b < 10; b++)
 			{
 				if (format[a + 1] == printer[b].arg)
 				{

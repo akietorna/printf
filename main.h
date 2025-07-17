@@ -15,6 +15,7 @@ typedef struct def_func
 } def_func;
 
 
+int match_big_string(va_list myargs, char *mybuff, int *c);
 void *_calloc(unsigned int num, unsigned int size);
 void empty_buff(char *mybuff, int *c);
 int _printf(const char *format, ...);

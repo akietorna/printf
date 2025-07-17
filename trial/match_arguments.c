@@ -10,5 +10,6 @@ def_func printer[] = {
 	{'u', match_unint},
 	{'o', match_oct},
 	{'x', match_hex},
-	{'X', match_hex_big}
+	{'X', match_hex_big},
+	{'S', match_big_string}
 };
