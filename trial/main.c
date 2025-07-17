@@ -1,12 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
  * main - Entry point
  *
- * Return: Always 0
+ * Return: 0 on success, error code otherwise
  */
 int main(void)
 {
-    _printf("%S\n", "Best\nSchool");
-    return (0);
+	int len, len2;
+
+	len = _printf("%S", "\n");
+	len2 = printf("\\x0A");
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ. them:%i me:%i\n", len2, len);
+		fflush(stdout);
+		return (1);
+	}
+	return (0);
 }

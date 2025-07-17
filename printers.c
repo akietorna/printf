@@ -50,6 +50,7 @@ int match_big_string(va_list myargs, char *mybuff, int *c)
 			}
 			total += print_hex_big(str[a], 0, mybuff, c);
 			a++;
+			total--;
 			continue;
 		}
 		if (*c >= 1023)
