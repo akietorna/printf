@@ -15,6 +15,8 @@ typedef struct def_func
 } def_func;
 
 
+int print_pointer(unsigned long int num, int len, char *mybuff, int *c);
+int match_pointer(va_list myargs, char *mybuff, int *c);
 int match_big_string(va_list myargs, char *mybuff, int *c);
 void *_calloc(unsigned int num, unsigned int size);
 void empty_buff(char *mybuff, int *c);

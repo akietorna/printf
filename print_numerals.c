@@ -130,3 +130,47 @@ int print_hex(unsigned int num, int len, char *mybuff, int *c)
 	len++;
 	return (len);
 }
+
+
+/**
+ *print_pointer - prints pointer in lower case
+ *@num: unsigned number
+ *@len: number of character printed
+ *@mybuff: print buffer
+ *@c: position on the buffer
+ *Return: the number of character printed
+ */
+
+int print_pointer(unsigned long int num, int len, char *mybuff, int *c)
+{
+        int i;
+        int shift;
+        int digit;
+	int lead = 1;
+
+        for (i = 15; i >= 0; i--)
+        {
+                if (*c >= 1023)
+                {
+                        write(1, mybuff, *c);
+                        empty_buff(mybuff, c);
+                }
+                shift = i * 4;
+                digit = (num >> shift) & 0xF;
+		if (digit == 0 && lead == 1 && i != 0)
+		{
+			continue;
+		}
+                if (digit < 10)
+		{
+                        mybuff[*c] = digit + '0';
+                }
+		else
+		{
+                        mybuff[*c] = digit - 10 + 'a';
+                }
+		(*c)++;
+                len++;
+        }
+        return len;
+}

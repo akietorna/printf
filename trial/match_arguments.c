@@ -11,5 +11,6 @@ def_func printer[] = {
 	{'o', match_oct},
 	{'x', match_hex},
 	{'X', match_hex_big},
-	{'S', match_big_string}
+	{'S', match_big_string},
+	{'p', match_pointer}
 };
