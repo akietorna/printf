@@ -161,6 +161,7 @@ int print_pointer(unsigned long int num, int len, char *mybuff, int *c)
 		{
 			continue;
 		}
+		lead = 0;
                 if (digit < 10)
 		{
                         mybuff[*c] = digit + '0';
