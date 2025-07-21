@@ -1,0 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdarg.h>
+
+/**
+ *spaceplus -inserts a space or a plus in front of an integer
+ *@my

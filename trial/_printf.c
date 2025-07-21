@@ -28,6 +28,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[a] == '%')
 		{
+			flags(format, &total, &a, mybuff, &c);
 			for (b = 0; b < 11; b++)
 			{
 				if (format[a + 1] == printer[b].arg)

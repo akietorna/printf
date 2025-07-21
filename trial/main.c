@@ -10,10 +10,9 @@
 int main(void)
 {
 	int len, len2;
-	void *p = (void *)0x7fff5100b608;
 
-	len = _printf("%p", p);
-	len2 = printf("%p", p);
+	len = _printf("% d, %+i, %#o, %#X, %#x \n", 255, 255, 255, 255, 255);
+	len2 = printf("% d, %+i, %#o, %#X, %#x \n", 255, 255, 255, 255, 255);
 	fflush(stdout);
 	if (len != len2)
 	{

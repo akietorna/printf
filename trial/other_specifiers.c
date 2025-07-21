@@ -18,7 +18,9 @@ int match_pointer(va_list myargs, char *mybuff, int *c)
 
 	if (ptr == NULL)
 	{
-		return (-1);
+		char *str = "(nil)";
+		write(1, str, 5);
+		return (5);
 	}
 	myptr = (unsigned long)ptr;
 	if (*c >= 1023)
